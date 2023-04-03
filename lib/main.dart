@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_inflearn_clean_architecture_basic/data/api.dart';
+import 'package:flutter_inflearn_clean_architecture_basic/data/pixabay_api.dart';
 import 'package:flutter_inflearn_clean_architecture_basic/data/photo_provider.dart';
 import 'package:flutter_inflearn_clean_architecture_basic/ui/home_screen.dart';
 import 'package:flutter_inflearn_clean_architecture_basic/ui/home_screen_view_model.dart';
