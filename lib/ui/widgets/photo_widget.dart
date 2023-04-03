@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_inflearn_clean_architecture_basic/data/api.dart';
 import 'package:flutter_inflearn_clean_architecture_basic/models/photo_model.dart';
 
 class PhotoWidget extends StatelessWidget {
   final Photo photo;
+
   const PhotoWidget({
     Key? key,
     required this.photo,

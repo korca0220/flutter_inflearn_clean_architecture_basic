@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_inflearn_clean_architecture_basic/data/api.dart';
+import 'package:flutter_inflearn_clean_architecture_basic/data/photo_provider.dart';
 import 'package:flutter_inflearn_clean_architecture_basic/models/photo_model.dart';
 import 'package:flutter_inflearn_clean_architecture_basic/ui/widgets/photo_widget.dart';
 
@@ -11,9 +11,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // 의존성이 생긴상태
-  // API가 없으면 동작하지 않는 UI
-  final api = PixabayApi();
   final textController = TextEditingController();
   List<Photo> _photos = [];
 
@@ -25,6 +22,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final photoProvider = PhotoProvider.of(context);
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -51,7 +50,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 suffixIcon: IconButton(
                   onPressed: () async {
-                    final photos = await api.fetch(textController.text);
+                    final photos =
+                        await photoProvider.api.fetch(textController.text);
                     setState(() {
                       _photos = photos;
                     });
