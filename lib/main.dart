@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Provider(
+      home: ChangeNotifierProvider(
         create: (_) => HomeScreenViewModel(PixabayApi()),
         child: const HomeScreen(),
       ),
