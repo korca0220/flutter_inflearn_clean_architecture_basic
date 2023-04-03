@@ -1,7 +1,5 @@
-import 'dart:convert';
-
-import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:flutter_inflearn_clean_architecture_basic/data/api.dart';
 import 'package:flutter_inflearn_clean_architecture_basic/models/photo_model.dart';
 import 'package:flutter_inflearn_clean_architecture_basic/ui/widgets/photo_widget.dart';
 
@@ -13,17 +11,11 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  // 의존성이 생긴상태
+  // API가 없으면 동작하지 않는 UI
+  final api = PixabayApi();
   final textController = TextEditingController();
   List<Photo> _photos = [];
-
-  Future<List<Photo>> fetch(String query) async {
-    var res = await http.get(Uri.parse(
-        "https://pixabay.com/api/?key=35017077-95d0aae89ecfa8fc1123ed7f7&q=$query&image_type=photo"));
-
-    final result = jsonDecode(res.body);
-    Iterable hits = result['hits'];
-    return hits.map((e) => Photo.fromJson(e)).toList();
-  }
 
   @override
   void dispose() {
@@ -59,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 suffixIcon: IconButton(
                   onPressed: () async {
-                    final photos = await fetch(textController.text);
+                    final photos = await api.fetch(textController.text);
                     setState(() {
                       _photos = photos;
                     });
