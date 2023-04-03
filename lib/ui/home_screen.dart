@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 suffixIcon: IconButton(
                   onPressed: () async {
-                    photoProvider.fetch(textController.text);
+                    photoProvider.viewModel.fetch(textController.text);
                   },
                   icon: const Icon(
                     Icons.search,
@@ -59,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           StreamBuilder<List<Photo>>(
-              stream: photoProvider.photoStream,
+              stream: photoProvider.viewModel.photoStream,
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
                   return const CircularProgressIndicator();
