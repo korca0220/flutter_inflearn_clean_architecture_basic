@@ -15,7 +15,7 @@ void main() {
 
     final List<Photo> result = fakeJson.map((e) => Photo.fromJson(e)).toList();
 
-    expect(viewModel.photos, result);
+    expect(viewModel.homeState.photos, result);
   });
 }
 
