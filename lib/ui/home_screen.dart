@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_inflearn_clean_architecture_basic/data/photo_provider.dart';
 import 'package:flutter_inflearn_clean_architecture_basic/models/photo_model.dart';
+import 'package:flutter_inflearn_clean_architecture_basic/ui/home_screen_view_model.dart';
 import 'package:flutter_inflearn_clean_architecture_basic/ui/widgets/photo_widget.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -21,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final photoProvider = PhotoProvider.of(context);
+    final viewModel = context.watch<HomeScreenViewModel>();
 
     return Scaffold(
       appBar: AppBar(
@@ -49,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 suffixIcon: IconButton(
                   onPressed: () async {
-                    photoProvider.viewModel.fetch(textController.text);
+                    viewModel.fetch(textController.text);
                   },
                   icon: const Icon(
                     Icons.search,
@@ -59,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           StreamBuilder<List<Photo>>(
-              stream: photoProvider.viewModel.photoStream,
+              stream: viewModel.photoStream,
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
                   return const CircularProgressIndicator();
