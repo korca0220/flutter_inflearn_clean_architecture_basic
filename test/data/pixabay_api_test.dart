@@ -1,4 +1,7 @@
-import 'package:flutter_inflearn_clean_architecture_basic/data/pixabay_api.dart';
+import 'package:flutter_inflearn_clean_architecture_basic/data/data_source/pixabay_api.dart';
+import 'package:flutter_inflearn_clean_architecture_basic/data/data_source/result.dart';
+import 'package:flutter_inflearn_clean_architecture_basic/data/photo_api_repository_impl.dart';
+import 'package:flutter_inflearn_clean_architecture_basic/domain/models/photo_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:http/http.dart' as http;
@@ -12,15 +15,15 @@ void main() {
     const baseUrl = "https://pixabay.com/api/";
     const key = "35017077-95d0aae89ecfa8fc1123ed7f7";
 
-    final api = PixabayApi();
     final client = MockClient();
+    final api = PhotoApiRepositoryImpl(PixaBayAPi(client));
     when(client.get(Uri.parse("$baseUrl?key=$key&q=apple&image_type=photo")))
         .thenAnswer((_) async => http.Response(fakeJsonBody, 200));
     ;
 
-    final result = await api.fetch('apple', client: client);
+    final result = await api.fetch('apple');
 
-    expect(result.first.id, 1122537);
+    expect((result as Success<List<Photo>>).data.first.id, 1122537);
 
     verify(client.get(Uri.parse("$baseUrl?key=$key&q=apple&image_type=photo")));
   });

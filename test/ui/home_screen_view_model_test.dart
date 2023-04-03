@@ -1,6 +1,9 @@
-import 'package:flutter_inflearn_clean_architecture_basic/data/photo_api_repository.dart';
-import 'package:flutter_inflearn_clean_architecture_basic/models/photo_model.dart';
-import 'package:flutter_inflearn_clean_architecture_basic/ui/home_screen_view_model.dart';
+import 'package:flutter_inflearn_clean_architecture_basic/data/data_source/result.dart';
+import 'package:flutter_inflearn_clean_architecture_basic/domain/models/photo_model.dart';
+import 'package:flutter_inflearn_clean_architecture_basic/domain/repository/photo_api_repository.dart';
+
+import 'package:flutter_inflearn_clean_architecture_basic/presentation/home/home_screen_view_model.dart';
+
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -18,9 +21,13 @@ void main() {
 
 class FakePhotoApiRepository extends PhotoApiRepository {
   @override
-  Future<List<Photo>> fetch(String query) async {
-    Future.delayed(const Duration(milliseconds: 500));
-    return fakeJson.map((e) => Photo.fromJson(e)).toList();
+  Future<Result<List<Photo>>> fetch(String query) async {
+    try {
+      Future.delayed(const Duration(milliseconds: 500));
+      return Result.success(fakeJson.map((e) => Photo.fromJson(e)).toList());
+    } catch (e) {
+      return Result.error(e.toString());
+    }
   }
 }
 
