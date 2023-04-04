@@ -1,6 +1,7 @@
 import 'package:flutter_inflearn_clean_architecture_basic/data/data_source/result.dart';
 import 'package:flutter_inflearn_clean_architecture_basic/domain/models/photo_model.dart';
 import 'package:flutter_inflearn_clean_architecture_basic/domain/repository/photo_api_repository.dart';
+import 'package:flutter_inflearn_clean_architecture_basic/domain/use_case/get_photos_use_case.dart';
 
 import 'package:flutter_inflearn_clean_architecture_basic/presentation/home/home_screen_view_model.dart';
 
@@ -8,7 +9,8 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   test('Stream Test', () async {
-    final viewModel = HomeScreenViewModel(FakePhotoApiRepository());
+    final viewModel =
+        HomeScreenViewModel(GetPhotosUseCase(FakePhotoApiRepository()));
 
     await viewModel.fetch('apple');
     await viewModel.fetch('car');
@@ -89,90 +91,5 @@ List<Map<String, dynamic>> fakeJson = [
     "user": "jarmoluk",
     "userImageURL":
         "https://cdn.pixabay.com/user/2019/09/18/07-14-26-24_250x250.jpg"
-  },
-  {
-    "id": 1868496,
-    "pageURL":
-        "https://pixabay.com/photos/apple-computer-desk-workspace-1868496/",
-    "type": "photo",
-    "tags": "apple, computer, desk",
-    "previewURL":
-        "https://cdn.pixabay.com/photo/2016/11/29/08/41/apple-1868496_150.jpg",
-    "previewWidth": 150,
-    "previewHeight": 99,
-    "webformatURL":
-        "https://pixabay.com/get/gb40dd468786564589354dc014b52e6b02333759a96942147b33fa33fb00fc21134553d9e153e645982aa6dfd59eb3c6032671d4a6aa2373965edce51a0feba51_640.jpg",
-    "webformatWidth": 640,
-    "webformatHeight": 426,
-    "largeImageURL":
-        "https://pixabay.com/get/g2f52e0f0e7adcefa6d3f762df3407888cdb40e68e523a711ac51a649a02fbd6d7b01bacad0300066d7b100aca5fa7f56d74797fe46d6795e3581b768150e383b_1280.jpg",
-    "imageWidth": 5184,
-    "imageHeight": 3456,
-    "imageSize": 2735519,
-    "views": 692899,
-    "downloads": 504549,
-    "collections": 1381,
-    "likes": 1037,
-    "comments": 275,
-    "user_id": 2286921,
-    "user": "Pexels",
-    "userImageURL":
-        "https://cdn.pixabay.com/user/2016/03/26/22-06-36-459_250x250.jpg"
-  },
-  {
-    "id": 634572,
-    "pageURL":
-        "https://pixabay.com/photos/apples-fruits-red-ripe-vitamins-634572/",
-    "type": "photo",
-    "tags": "apples, fruits, red",
-    "previewURL":
-        "https://cdn.pixabay.com/photo/2015/02/13/00/43/apples-634572_150.jpg",
-    "previewWidth": 100,
-    "previewHeight": 150,
-    "webformatURL":
-        "https://pixabay.com/get/g8441c3d42b36eb60da9a6670166411d92d0273572e39d194968a2f759cc2f9e15f6b51b58da4cb5a1914c94522b1f55c_640.jpg",
-    "webformatWidth": 427,
-    "webformatHeight": 640,
-    "largeImageURL":
-        "https://pixabay.com/get/g622acc5da3e22025cddba4b7fd49aeef1b272aaac3e51d0e26d754c2b288c2fc9732b5cb0bbb8ede44daae07e2a15c31f39ed92235070ca38f8a446c3602fb76_1280.jpg",
-    "imageWidth": 3345,
-    "imageHeight": 5017,
-    "imageSize": 811238,
-    "views": 483335,
-    "downloads": 284202,
-    "collections": 1272,
-    "likes": 2357,
-    "comments": 195,
-    "user_id": 752536,
-    "user": "Desertrose7",
-    "userImageURL":
-        "https://cdn.pixabay.com/user/2016/03/14/13-25-18-933_250x250.jpg"
-  },
-  {
-    "id": 1873078,
-    "pageURL": "https://pixabay.com/photos/apples-orchard-apple-trees-1873078/",
-    "type": "photo",
-    "tags": "apples, orchard, apple trees",
-    "previewURL":
-        "https://cdn.pixabay.com/photo/2016/11/30/15/23/apples-1873078_150.jpg",
-    "previewWidth": 150,
-    "previewHeight": 95,
-    "webformatURL":
-        "https://pixabay.com/get/gdaeb3a812812580b5ae6771b4655e4cfbdaf16263447d360b9fd0d0c4410d8139e1245740672d490c8af2c5723f3aa26042fa5c2918f63416ac6883a80445827_640.jpg",
-    "webformatWidth": 640,
-    "webformatHeight": 408,
-    "largeImageURL":
-        "https://pixabay.com/get/g453761aec2c944860216529c932267c9baef8c78d32a3fa921b5628b06939be2f0c901f50a2c0020896b1937d8c35655f0a42a7d394b48fde941c620e74b3b51_1280.jpg",
-    "imageWidth": 3212,
-    "imageHeight": 2051,
-    "imageSize": 2581012,
-    "views": 444832,
-    "downloads": 259850,
-    "collections": 1136,
-    "likes": 1146,
-    "comments": 177,
-    "user_id": 3890388,
-    "user": "lumix2004",
-    "userImageURL": ""
   },
 ];
