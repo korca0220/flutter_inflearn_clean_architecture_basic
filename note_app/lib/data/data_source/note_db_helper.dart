@@ -1,9 +1,9 @@
 import 'package:note_app/domain/model/note.dart';
 import 'package:sqflite/sqflite.dart';
 
-class NoteDB {
+class NoteDBHelper {
   Database db;
-  NoteDB(this.db);
+  NoteDBHelper(this.db);
 
   Future<Note?> getNoteById(int id) async {
     // SELECT = FROM note WHERE id = ?
