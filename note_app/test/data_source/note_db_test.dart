@@ -24,7 +24,7 @@ void main() {
     Note? note = (await noteDBHelper.getNoteById(1));
     expect(note!.id, 1);
 
-    await noteDBHelper.updateNote(note!.copyWith(title: 'testtest'));
+    await noteDBHelper.updateNote(note.copyWith(title: 'testtest'));
     note = (await noteDBHelper.getNoteById(1));
     expect(note!.title, 'testtest');
 
