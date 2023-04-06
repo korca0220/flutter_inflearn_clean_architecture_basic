@@ -9,7 +9,9 @@ import 'package:note_app/presentation/notes/note_state.dart';
 class NotesViewModel extends ChangeNotifier {
   NoteRepository repository;
 
-  NotesViewModel(this.repository);
+  NotesViewModel(this.repository) {
+    _loadNotes();
+  }
   NoteState _state = NoteState(notes: []);
   NoteState get state => _state;
 
