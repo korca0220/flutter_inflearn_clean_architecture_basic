@@ -5,6 +5,7 @@ import 'package:note_app/presentation/add_edit_note/add_edit_note_screen.dart';
 import 'package:note_app/presentation/notes/note_event.dart';
 import 'package:note_app/presentation/notes/notes_view_model.dart';
 import 'package:note_app/presentation/notes/widgets/note_time.dart';
+import 'package:note_app/presentation/notes/widgets/order_section.dart';
 import 'package:provider/provider.dart';
 
 class NoteScreen extends StatelessWidget {
@@ -50,8 +51,14 @@ class NoteScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: ListView(
-          children: state.notes
+        child: ListView(children: [
+          OrderSection(
+            noteOrder: state.noteOrder,
+            onOrderChanged: (noteOrder) {
+              viewModel.onEvent(NoteEvent.changeOrder(noteOrder));
+            },
+          ),
+          ...state.notes
               .map((note) => GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -85,7 +92,7 @@ class NoteScreen extends StatelessWidget {
                     ),
                   ))
               .toList(),
-        ),
+        ]),
       ),
     );
   }

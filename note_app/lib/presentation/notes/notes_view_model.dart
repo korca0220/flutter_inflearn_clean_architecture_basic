@@ -26,6 +26,10 @@ class NotesViewModel extends ChangeNotifier {
       loadNotes: _loadNotes,
       deleteNote: (note) => _deleteNote(note),
       restoreNote: _restoreNote,
+      changeOrder: (noteOrder) {
+        _state = state.copyWith(noteOrder: noteOrder);
+        _loadNotes();
+      },
     );
   }
 
