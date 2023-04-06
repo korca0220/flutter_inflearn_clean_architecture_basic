@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$NoteState {
   List<Note> get notes => throw _privateConstructorUsedError;
+  NoteOrder get noteOrder => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $NoteStateCopyWith<NoteState> get copyWith =>
@@ -28,7 +29,9 @@ abstract class $NoteStateCopyWith<$Res> {
   factory $NoteStateCopyWith(NoteState value, $Res Function(NoteState) then) =
       _$NoteStateCopyWithImpl<$Res, NoteState>;
   @useResult
-  $Res call({List<Note> notes});
+  $Res call({List<Note> notes, NoteOrder noteOrder});
+
+  $NoteOrderCopyWith<$Res> get noteOrder;
 }
 
 /// @nodoc
@@ -45,13 +48,26 @@ class _$NoteStateCopyWithImpl<$Res, $Val extends NoteState>
   @override
   $Res call({
     Object? notes = null,
+    Object? noteOrder = null,
   }) {
     return _then(_value.copyWith(
       notes: null == notes
           ? _value.notes
           : notes // ignore: cast_nullable_to_non_nullable
               as List<Note>,
+      noteOrder: null == noteOrder
+          ? _value.noteOrder
+          : noteOrder // ignore: cast_nullable_to_non_nullable
+              as NoteOrder,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $NoteOrderCopyWith<$Res> get noteOrder {
+    return $NoteOrderCopyWith<$Res>(_value.noteOrder, (value) {
+      return _then(_value.copyWith(noteOrder: value) as $Val);
+    });
   }
 }
 
@@ -62,7 +78,10 @@ abstract class _$$_NoteStateCopyWith<$Res> implements $NoteStateCopyWith<$Res> {
       __$$_NoteStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Note> notes});
+  $Res call({List<Note> notes, NoteOrder noteOrder});
+
+  @override
+  $NoteOrderCopyWith<$Res> get noteOrder;
 }
 
 /// @nodoc
@@ -77,12 +96,17 @@ class __$$_NoteStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? notes = null,
+    Object? noteOrder = null,
   }) {
     return _then(_$_NoteState(
       notes: null == notes
           ? _value._notes
           : notes // ignore: cast_nullable_to_non_nullable
               as List<Note>,
+      noteOrder: null == noteOrder
+          ? _value.noteOrder
+          : noteOrder // ignore: cast_nullable_to_non_nullable
+              as NoteOrder,
     ));
   }
 }
@@ -90,7 +114,8 @@ class __$$_NoteStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_NoteState implements _NoteState {
-  _$_NoteState({required final List<Note> notes}) : _notes = notes;
+  _$_NoteState({required final List<Note> notes, required this.noteOrder})
+      : _notes = notes;
 
   final List<Note> _notes;
   @override
@@ -101,8 +126,11 @@ class _$_NoteState implements _NoteState {
   }
 
   @override
+  final NoteOrder noteOrder;
+
+  @override
   String toString() {
-    return 'NoteState(notes: $notes)';
+    return 'NoteState(notes: $notes, noteOrder: $noteOrder)';
   }
 
   @override
@@ -110,12 +138,14 @@ class _$_NoteState implements _NoteState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_NoteState &&
-            const DeepCollectionEquality().equals(other._notes, _notes));
+            const DeepCollectionEquality().equals(other._notes, _notes) &&
+            (identical(other.noteOrder, noteOrder) ||
+                other.noteOrder == noteOrder));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_notes));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_notes), noteOrder);
 
   @JsonKey(ignore: true)
   @override
@@ -125,10 +155,14 @@ class _$_NoteState implements _NoteState {
 }
 
 abstract class _NoteState implements NoteState {
-  factory _NoteState({required final List<Note> notes}) = _$_NoteState;
+  factory _NoteState(
+      {required final List<Note> notes,
+      required final NoteOrder noteOrder}) = _$_NoteState;
 
   @override
   List<Note> get notes;
+  @override
+  NoteOrder get noteOrder;
   @override
   @JsonKey(ignore: true)
   _$$_NoteStateCopyWith<_$_NoteState> get copyWith =>
