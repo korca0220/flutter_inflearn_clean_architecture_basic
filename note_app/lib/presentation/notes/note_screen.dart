@@ -52,21 +52,37 @@ class NoteScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: ListView(
           children: state.notes
-              .map((note) => NoteItem(
-                    note: note,
-                    onDeleteTap: () {
-                      viewModel.onEvent(NoteEvent.deleteNote(note));
-                      final snackBar = SnackBar(
-                        content: Text('노트가 삭제되었습니다.'),
-                        action: SnackBarAction(
-                          label: '취소',
-                          onPressed: () {
-                            viewModel.onEvent(const NoteEvent.restoreNote());
-                          },
+              .map((note) => GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AddEditNoteScreen(
+                            note: note,
+                          ),
                         ),
-                      );
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      ).then((isSaved) {
+                        if (isSaved != null && isSaved) {
+                          viewModel.onEvent(const NoteEvent.loadNotes());
+                        }
+                      });
                     },
+                    child: NoteItem(
+                      note: note,
+                      onDeleteTap: () {
+                        viewModel.onEvent(NoteEvent.deleteNote(note));
+                        final snackBar = SnackBar(
+                          content: Text('노트가 삭제되었습니다.'),
+                          action: SnackBarAction(
+                            label: '취소',
+                            onPressed: () {
+                              viewModel.onEvent(const NoteEvent.restoreNote());
+                            },
+                          ),
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      },
+                    ),
                   ))
               .toList(),
         ),

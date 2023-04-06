@@ -3,13 +3,14 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:note_app/core/ui/colors.dart';
 import 'package:note_app/domain/model/note.dart';
-import 'package:note_app/domain/repository/note_repository.dart';
+
+import 'package:note_app/domain/use_case/note_use_case.dart';
 import 'package:note_app/presentation/add_edit_note/add_edit_note_event.dart';
 import 'package:note_app/presentation/add_edit_note/add_edit_note_ui_event.dart';
 
 class AddEditNoteViewModel extends ChangeNotifier {
-  final NoteRepository repository;
-  AddEditNoteViewModel(this.repository);
+  final NoteUseCase noteUseCase;
+  AddEditNoteViewModel(this.noteUseCase);
 
   int _color = roseBad.value;
   int get color => _color;
@@ -30,8 +31,14 @@ class AddEditNoteViewModel extends ChangeNotifier {
   }
 
   Future<void> _saveNote(int? id, String title, String content) async {
+    if (title.isEmpty || content.isEmpty) {
+      _eventController
+          .add(const AddEditNoteUiEvent.showSnackbar('제목 또는 내용이 비어 있습니다.'));
+      return;
+    }
+
     if (id == null) {
-      await repository.insertNote(
+      await noteUseCase.addNote(
         Note(
           title: title,
           content: content,
@@ -40,7 +47,7 @@ class AddEditNoteViewModel extends ChangeNotifier {
         ),
       );
     } else {
-      await repository.editNote(
+      await noteUseCase.updateNote(
         Note(
           id: id,
           title: title,

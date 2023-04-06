@@ -6,6 +6,9 @@ class GetNotes {
   GetNotes(this.repository);
 
   Future<List<Note>> call() async {
-    return await repository.getNotes();
+    final result = await repository.getNotes();
+    result.sort((a, b) => -a.timestamp.compareTo(b.timestamp));
+
+    return result;
   }
 }
