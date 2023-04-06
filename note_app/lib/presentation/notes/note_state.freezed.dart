@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$NoteState {
   List<Note> get notes => throw _privateConstructorUsedError;
   NoteOrder get noteOrder => throw _privateConstructorUsedError;
+  bool get onOrderSection => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $NoteStateCopyWith<NoteState> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $NoteStateCopyWith<$Res> {
   factory $NoteStateCopyWith(NoteState value, $Res Function(NoteState) then) =
       _$NoteStateCopyWithImpl<$Res, NoteState>;
   @useResult
-  $Res call({List<Note> notes, NoteOrder noteOrder});
+  $Res call({List<Note> notes, NoteOrder noteOrder, bool onOrderSection});
 
   $NoteOrderCopyWith<$Res> get noteOrder;
 }
@@ -49,6 +50,7 @@ class _$NoteStateCopyWithImpl<$Res, $Val extends NoteState>
   $Res call({
     Object? notes = null,
     Object? noteOrder = null,
+    Object? onOrderSection = null,
   }) {
     return _then(_value.copyWith(
       notes: null == notes
@@ -59,6 +61,10 @@ class _$NoteStateCopyWithImpl<$Res, $Val extends NoteState>
           ? _value.noteOrder
           : noteOrder // ignore: cast_nullable_to_non_nullable
               as NoteOrder,
+      onOrderSection: null == onOrderSection
+          ? _value.onOrderSection
+          : onOrderSection // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -78,7 +84,7 @@ abstract class _$$_NoteStateCopyWith<$Res> implements $NoteStateCopyWith<$Res> {
       __$$_NoteStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Note> notes, NoteOrder noteOrder});
+  $Res call({List<Note> notes, NoteOrder noteOrder, bool onOrderSection});
 
   @override
   $NoteOrderCopyWith<$Res> get noteOrder;
@@ -97,6 +103,7 @@ class __$$_NoteStateCopyWithImpl<$Res>
   $Res call({
     Object? notes = null,
     Object? noteOrder = null,
+    Object? onOrderSection = null,
   }) {
     return _then(_$_NoteState(
       notes: null == notes
@@ -107,6 +114,10 @@ class __$$_NoteStateCopyWithImpl<$Res>
           ? _value.noteOrder
           : noteOrder // ignore: cast_nullable_to_non_nullable
               as NoteOrder,
+      onOrderSection: null == onOrderSection
+          ? _value.onOrderSection
+          : onOrderSection // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -114,7 +125,10 @@ class __$$_NoteStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_NoteState implements _NoteState {
-  _$_NoteState({required final List<Note> notes, required this.noteOrder})
+  _$_NoteState(
+      {required final List<Note> notes,
+      required this.noteOrder,
+      required this.onOrderSection})
       : _notes = notes;
 
   final List<Note> _notes;
@@ -127,10 +141,12 @@ class _$_NoteState implements _NoteState {
 
   @override
   final NoteOrder noteOrder;
+  @override
+  final bool onOrderSection;
 
   @override
   String toString() {
-    return 'NoteState(notes: $notes, noteOrder: $noteOrder)';
+    return 'NoteState(notes: $notes, noteOrder: $noteOrder, onOrderSection: $onOrderSection)';
   }
 
   @override
@@ -140,12 +156,14 @@ class _$_NoteState implements _NoteState {
             other is _$_NoteState &&
             const DeepCollectionEquality().equals(other._notes, _notes) &&
             (identical(other.noteOrder, noteOrder) ||
-                other.noteOrder == noteOrder));
+                other.noteOrder == noteOrder) &&
+            (identical(other.onOrderSection, onOrderSection) ||
+                other.onOrderSection == onOrderSection));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_notes), noteOrder);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_notes), noteOrder, onOrderSection);
 
   @JsonKey(ignore: true)
   @override
@@ -157,12 +175,15 @@ class _$_NoteState implements _NoteState {
 abstract class _NoteState implements NoteState {
   factory _NoteState(
       {required final List<Note> notes,
-      required final NoteOrder noteOrder}) = _$_NoteState;
+      required final NoteOrder noteOrder,
+      required final bool onOrderSection}) = _$_NoteState;
 
   @override
   List<Note> get notes;
   @override
   NoteOrder get noteOrder;
+  @override
+  bool get onOrderSection;
   @override
   @JsonKey(ignore: true)
   _$$_NoteStateCopyWith<_$_NoteState> get copyWith =>

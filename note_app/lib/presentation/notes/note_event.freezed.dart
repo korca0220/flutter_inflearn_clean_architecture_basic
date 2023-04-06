@@ -22,6 +22,7 @@ mixin _$NoteEvent {
     required TResult Function(Note note) deleteNote,
     required TResult Function() restoreNote,
     required TResult Function(NoteOrder noteOrder) changeOrder,
+    required TResult Function(bool onOff) changeOnSection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$NoteEvent {
     TResult? Function(Note note)? deleteNote,
     TResult? Function()? restoreNote,
     TResult? Function(NoteOrder noteOrder)? changeOrder,
+    TResult? Function(bool onOff)? changeOnSection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$NoteEvent {
     TResult Function(Note note)? deleteNote,
     TResult Function()? restoreNote,
     TResult Function(NoteOrder noteOrder)? changeOrder,
+    TResult Function(bool onOff)? changeOnSection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$NoteEvent {
     required TResult Function(DeleteNote value) deleteNote,
     required TResult Function(RestoreNote value) restoreNote,
     required TResult Function(ChangeOrder value) changeOrder,
+    required TResult Function(ChangeOnSection value) changeOnSection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$NoteEvent {
     TResult? Function(DeleteNote value)? deleteNote,
     TResult? Function(RestoreNote value)? restoreNote,
     TResult? Function(ChangeOrder value)? changeOrder,
+    TResult? Function(ChangeOnSection value)? changeOnSection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$NoteEvent {
     TResult Function(DeleteNote value)? deleteNote,
     TResult Function(RestoreNote value)? restoreNote,
     TResult Function(ChangeOrder value)? changeOrder,
+    TResult Function(ChangeOnSection value)? changeOnSection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -127,6 +133,7 @@ class _$LoadNotes implements LoadNotes {
     required TResult Function(Note note) deleteNote,
     required TResult Function() restoreNote,
     required TResult Function(NoteOrder noteOrder) changeOrder,
+    required TResult Function(bool onOff) changeOnSection,
   }) {
     return loadNotes();
   }
@@ -138,6 +145,7 @@ class _$LoadNotes implements LoadNotes {
     TResult? Function(Note note)? deleteNote,
     TResult? Function()? restoreNote,
     TResult? Function(NoteOrder noteOrder)? changeOrder,
+    TResult? Function(bool onOff)? changeOnSection,
   }) {
     return loadNotes?.call();
   }
@@ -149,6 +157,7 @@ class _$LoadNotes implements LoadNotes {
     TResult Function(Note note)? deleteNote,
     TResult Function()? restoreNote,
     TResult Function(NoteOrder noteOrder)? changeOrder,
+    TResult Function(bool onOff)? changeOnSection,
     required TResult orElse(),
   }) {
     if (loadNotes != null) {
@@ -164,6 +173,7 @@ class _$LoadNotes implements LoadNotes {
     required TResult Function(DeleteNote value) deleteNote,
     required TResult Function(RestoreNote value) restoreNote,
     required TResult Function(ChangeOrder value) changeOrder,
+    required TResult Function(ChangeOnSection value) changeOnSection,
   }) {
     return loadNotes(this);
   }
@@ -175,6 +185,7 @@ class _$LoadNotes implements LoadNotes {
     TResult? Function(DeleteNote value)? deleteNote,
     TResult? Function(RestoreNote value)? restoreNote,
     TResult? Function(ChangeOrder value)? changeOrder,
+    TResult? Function(ChangeOnSection value)? changeOnSection,
   }) {
     return loadNotes?.call(this);
   }
@@ -186,6 +197,7 @@ class _$LoadNotes implements LoadNotes {
     TResult Function(DeleteNote value)? deleteNote,
     TResult Function(RestoreNote value)? restoreNote,
     TResult Function(ChangeOrder value)? changeOrder,
+    TResult Function(ChangeOnSection value)? changeOnSection,
     required TResult orElse(),
   }) {
     if (loadNotes != null) {
@@ -277,6 +289,7 @@ class _$DeleteNote implements DeleteNote {
     required TResult Function(Note note) deleteNote,
     required TResult Function() restoreNote,
     required TResult Function(NoteOrder noteOrder) changeOrder,
+    required TResult Function(bool onOff) changeOnSection,
   }) {
     return deleteNote(note);
   }
@@ -288,6 +301,7 @@ class _$DeleteNote implements DeleteNote {
     TResult? Function(Note note)? deleteNote,
     TResult? Function()? restoreNote,
     TResult? Function(NoteOrder noteOrder)? changeOrder,
+    TResult? Function(bool onOff)? changeOnSection,
   }) {
     return deleteNote?.call(note);
   }
@@ -299,6 +313,7 @@ class _$DeleteNote implements DeleteNote {
     TResult Function(Note note)? deleteNote,
     TResult Function()? restoreNote,
     TResult Function(NoteOrder noteOrder)? changeOrder,
+    TResult Function(bool onOff)? changeOnSection,
     required TResult orElse(),
   }) {
     if (deleteNote != null) {
@@ -314,6 +329,7 @@ class _$DeleteNote implements DeleteNote {
     required TResult Function(DeleteNote value) deleteNote,
     required TResult Function(RestoreNote value) restoreNote,
     required TResult Function(ChangeOrder value) changeOrder,
+    required TResult Function(ChangeOnSection value) changeOnSection,
   }) {
     return deleteNote(this);
   }
@@ -325,6 +341,7 @@ class _$DeleteNote implements DeleteNote {
     TResult? Function(DeleteNote value)? deleteNote,
     TResult? Function(RestoreNote value)? restoreNote,
     TResult? Function(ChangeOrder value)? changeOrder,
+    TResult? Function(ChangeOnSection value)? changeOnSection,
   }) {
     return deleteNote?.call(this);
   }
@@ -336,6 +353,7 @@ class _$DeleteNote implements DeleteNote {
     TResult Function(DeleteNote value)? deleteNote,
     TResult Function(RestoreNote value)? restoreNote,
     TResult Function(ChangeOrder value)? changeOrder,
+    TResult Function(ChangeOnSection value)? changeOnSection,
     required TResult orElse(),
   }) {
     if (deleteNote != null) {
@@ -396,6 +414,7 @@ class _$RestoreNote implements RestoreNote {
     required TResult Function(Note note) deleteNote,
     required TResult Function() restoreNote,
     required TResult Function(NoteOrder noteOrder) changeOrder,
+    required TResult Function(bool onOff) changeOnSection,
   }) {
     return restoreNote();
   }
@@ -407,6 +426,7 @@ class _$RestoreNote implements RestoreNote {
     TResult? Function(Note note)? deleteNote,
     TResult? Function()? restoreNote,
     TResult? Function(NoteOrder noteOrder)? changeOrder,
+    TResult? Function(bool onOff)? changeOnSection,
   }) {
     return restoreNote?.call();
   }
@@ -418,6 +438,7 @@ class _$RestoreNote implements RestoreNote {
     TResult Function(Note note)? deleteNote,
     TResult Function()? restoreNote,
     TResult Function(NoteOrder noteOrder)? changeOrder,
+    TResult Function(bool onOff)? changeOnSection,
     required TResult orElse(),
   }) {
     if (restoreNote != null) {
@@ -433,6 +454,7 @@ class _$RestoreNote implements RestoreNote {
     required TResult Function(DeleteNote value) deleteNote,
     required TResult Function(RestoreNote value) restoreNote,
     required TResult Function(ChangeOrder value) changeOrder,
+    required TResult Function(ChangeOnSection value) changeOnSection,
   }) {
     return restoreNote(this);
   }
@@ -444,6 +466,7 @@ class _$RestoreNote implements RestoreNote {
     TResult? Function(DeleteNote value)? deleteNote,
     TResult? Function(RestoreNote value)? restoreNote,
     TResult? Function(ChangeOrder value)? changeOrder,
+    TResult? Function(ChangeOnSection value)? changeOnSection,
   }) {
     return restoreNote?.call(this);
   }
@@ -455,6 +478,7 @@ class _$RestoreNote implements RestoreNote {
     TResult Function(DeleteNote value)? deleteNote,
     TResult Function(RestoreNote value)? restoreNote,
     TResult Function(ChangeOrder value)? changeOrder,
+    TResult Function(ChangeOnSection value)? changeOnSection,
     required TResult orElse(),
   }) {
     if (restoreNote != null) {
@@ -547,6 +571,7 @@ class _$ChangeOrder implements ChangeOrder {
     required TResult Function(Note note) deleteNote,
     required TResult Function() restoreNote,
     required TResult Function(NoteOrder noteOrder) changeOrder,
+    required TResult Function(bool onOff) changeOnSection,
   }) {
     return changeOrder(noteOrder);
   }
@@ -558,6 +583,7 @@ class _$ChangeOrder implements ChangeOrder {
     TResult? Function(Note note)? deleteNote,
     TResult? Function()? restoreNote,
     TResult? Function(NoteOrder noteOrder)? changeOrder,
+    TResult? Function(bool onOff)? changeOnSection,
   }) {
     return changeOrder?.call(noteOrder);
   }
@@ -569,6 +595,7 @@ class _$ChangeOrder implements ChangeOrder {
     TResult Function(Note note)? deleteNote,
     TResult Function()? restoreNote,
     TResult Function(NoteOrder noteOrder)? changeOrder,
+    TResult Function(bool onOff)? changeOnSection,
     required TResult orElse(),
   }) {
     if (changeOrder != null) {
@@ -584,6 +611,7 @@ class _$ChangeOrder implements ChangeOrder {
     required TResult Function(DeleteNote value) deleteNote,
     required TResult Function(RestoreNote value) restoreNote,
     required TResult Function(ChangeOrder value) changeOrder,
+    required TResult Function(ChangeOnSection value) changeOnSection,
   }) {
     return changeOrder(this);
   }
@@ -595,6 +623,7 @@ class _$ChangeOrder implements ChangeOrder {
     TResult? Function(DeleteNote value)? deleteNote,
     TResult? Function(RestoreNote value)? restoreNote,
     TResult? Function(ChangeOrder value)? changeOrder,
+    TResult? Function(ChangeOnSection value)? changeOnSection,
   }) {
     return changeOrder?.call(this);
   }
@@ -606,6 +635,7 @@ class _$ChangeOrder implements ChangeOrder {
     TResult Function(DeleteNote value)? deleteNote,
     TResult Function(RestoreNote value)? restoreNote,
     TResult Function(ChangeOrder value)? changeOrder,
+    TResult Function(ChangeOnSection value)? changeOnSection,
     required TResult orElse(),
   }) {
     if (changeOrder != null) {
@@ -621,5 +651,156 @@ abstract class ChangeOrder implements NoteEvent {
   NoteOrder get noteOrder;
   @JsonKey(ignore: true)
   _$$ChangeOrderCopyWith<_$ChangeOrder> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeOnSectionCopyWith<$Res> {
+  factory _$$ChangeOnSectionCopyWith(
+          _$ChangeOnSection value, $Res Function(_$ChangeOnSection) then) =
+      __$$ChangeOnSectionCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool onOff});
+}
+
+/// @nodoc
+class __$$ChangeOnSectionCopyWithImpl<$Res>
+    extends _$NoteEventCopyWithImpl<$Res, _$ChangeOnSection>
+    implements _$$ChangeOnSectionCopyWith<$Res> {
+  __$$ChangeOnSectionCopyWithImpl(
+      _$ChangeOnSection _value, $Res Function(_$ChangeOnSection) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? onOff = null,
+  }) {
+    return _then(_$ChangeOnSection(
+      null == onOff
+          ? _value.onOff
+          : onOff // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeOnSection implements ChangeOnSection {
+  const _$ChangeOnSection(this.onOff);
+
+  @override
+  final bool onOff;
+
+  @override
+  String toString() {
+    return 'NoteEvent.changeOnSection(onOff: $onOff)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeOnSection &&
+            (identical(other.onOff, onOff) || other.onOff == onOff));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, onOff);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeOnSectionCopyWith<_$ChangeOnSection> get copyWith =>
+      __$$ChangeOnSectionCopyWithImpl<_$ChangeOnSection>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadNotes,
+    required TResult Function(Note note) deleteNote,
+    required TResult Function() restoreNote,
+    required TResult Function(NoteOrder noteOrder) changeOrder,
+    required TResult Function(bool onOff) changeOnSection,
+  }) {
+    return changeOnSection(onOff);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadNotes,
+    TResult? Function(Note note)? deleteNote,
+    TResult? Function()? restoreNote,
+    TResult? Function(NoteOrder noteOrder)? changeOrder,
+    TResult? Function(bool onOff)? changeOnSection,
+  }) {
+    return changeOnSection?.call(onOff);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadNotes,
+    TResult Function(Note note)? deleteNote,
+    TResult Function()? restoreNote,
+    TResult Function(NoteOrder noteOrder)? changeOrder,
+    TResult Function(bool onOff)? changeOnSection,
+    required TResult orElse(),
+  }) {
+    if (changeOnSection != null) {
+      return changeOnSection(onOff);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadNotes value) loadNotes,
+    required TResult Function(DeleteNote value) deleteNote,
+    required TResult Function(RestoreNote value) restoreNote,
+    required TResult Function(ChangeOrder value) changeOrder,
+    required TResult Function(ChangeOnSection value) changeOnSection,
+  }) {
+    return changeOnSection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadNotes value)? loadNotes,
+    TResult? Function(DeleteNote value)? deleteNote,
+    TResult? Function(RestoreNote value)? restoreNote,
+    TResult? Function(ChangeOrder value)? changeOrder,
+    TResult? Function(ChangeOnSection value)? changeOnSection,
+  }) {
+    return changeOnSection?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadNotes value)? loadNotes,
+    TResult Function(DeleteNote value)? deleteNote,
+    TResult Function(RestoreNote value)? restoreNote,
+    TResult Function(ChangeOrder value)? changeOrder,
+    TResult Function(ChangeOnSection value)? changeOnSection,
+    required TResult orElse(),
+  }) {
+    if (changeOnSection != null) {
+      return changeOnSection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeOnSection implements NoteEvent {
+  const factory ChangeOnSection(final bool onOff) = _$ChangeOnSection;
+
+  bool get onOff;
+  @JsonKey(ignore: true)
+  _$$ChangeOnSectionCopyWith<_$ChangeOnSection> get copyWith =>
       throw _privateConstructorUsedError;
 }

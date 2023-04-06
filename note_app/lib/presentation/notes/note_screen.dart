@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:note_app/core/ui/colors.dart';
-import 'package:note_app/domain/model/note.dart';
+
 import 'package:note_app/presentation/add_edit_note/add_edit_note_screen.dart';
 import 'package:note_app/presentation/notes/note_event.dart';
 import 'package:note_app/presentation/notes/notes_view_model.dart';
@@ -20,8 +19,11 @@ class NoteScreen extends StatelessWidget {
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.sort),
+            onPressed: () {
+              viewModel
+                  .onEvent(NoteEvent.changeOnSection(!state.onOrderSection));
+            },
+            icon: const Icon(Icons.sort),
           ),
         ],
         elevation: 0,
@@ -38,7 +40,7 @@ class NoteScreen extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) {
-                return AddEditNoteScreen();
+                return const AddEditNoteScreen();
               },
             ),
           ).then((isSaved) {
@@ -52,11 +54,16 @@ class NoteScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: ListView(children: [
-          OrderSection(
-            noteOrder: state.noteOrder,
-            onOrderChanged: (noteOrder) {
-              viewModel.onEvent(NoteEvent.changeOrder(noteOrder));
-            },
+          AnimatedSwitcher(
+            duration: const Duration(milliseconds: 500),
+            child: state.onOrderSection
+                ? OrderSection(
+                    noteOrder: state.noteOrder,
+                    onOrderChanged: (noteOrder) {
+                      viewModel.onEvent(NoteEvent.changeOrder(noteOrder));
+                    },
+                  )
+                : const SizedBox.shrink(),
           ),
           ...state.notes
               .map((note) => GestureDetector(

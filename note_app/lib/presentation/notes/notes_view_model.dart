@@ -16,6 +16,7 @@ class NotesViewModel extends ChangeNotifier {
   NoteState _state = NoteState(
     notes: [],
     noteOrder: const NoteOrder.date(OrderType.descending()),
+    onOrderSection: false,
   );
   NoteState get state => _state;
 
@@ -29,6 +30,10 @@ class NotesViewModel extends ChangeNotifier {
       changeOrder: (noteOrder) {
         _state = state.copyWith(noteOrder: noteOrder);
         _loadNotes();
+      },
+      changeOnSection: (onOff) {
+        _state = state.copyWith(onOrderSection: onOff);
+        notifyListeners();
       },
     );
   }

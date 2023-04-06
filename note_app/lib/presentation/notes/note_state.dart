@@ -9,5 +9,6 @@ class NoteState with _$NoteState {
   factory NoteState({
     required List<Note> notes,
     required NoteOrder noteOrder,
+    required bool onOrderSection,
   }) = _NoteState;
 }

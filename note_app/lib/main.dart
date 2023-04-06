@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.white,
         canvasColor: darkGray,
+        unselectedWidgetColor: Colors.white,
         floatingActionButtonTheme:
             Theme.of(context).floatingActionButtonTheme.copyWith(
                   backgroundColor: lightBlue,
